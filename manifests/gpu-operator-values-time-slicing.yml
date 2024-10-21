@@ -1,0 +1,14 @@
+devicePlugin:
+  config:
+    create: true
+    data:
+      default: |-
+        version: v1
+        sharing:
+          mps:
+            resources:
+              - name: nvidia.com/gpu
+                replicas: 4
+            renameByDefault: false
+            failRequestsGreaterThanOne: false
+    name: tmps-config
