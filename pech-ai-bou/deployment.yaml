@@ -32,7 +32,8 @@ spec:
           name: hugginface-hub
         resources:
           limits:
-            nvidia.com/gpu: "1"
+            #nvidia.com/gpu: 1
+            nvidia.com/mig-3g.40gb: 1
       volumes:
       - name: hugginface-hub
         persistentVolumeClaim:
