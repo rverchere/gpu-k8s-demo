@@ -1,0 +1,17 @@
+devicePlugin:
+  enabled: true
+  # # creates config to allow GPU time slicing (in order to share gpu)
+  # config:
+  #   create: true
+  #   name: "time-slicing-config"
+  #   default: "any"
+  #   data:
+  #     any: |-
+  #       version: v1
+  #       sharing:
+  #         timeSlicing:
+  #           renameByDefault: true
+  #           failRequestsGreaterThanOne: true
+  #           resources:
+  #           - name: nvidia.com/gpu
+  #             replicas: 30

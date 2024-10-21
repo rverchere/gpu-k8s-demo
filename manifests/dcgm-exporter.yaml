@@ -1,0 +1,55 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+  name: nvidia-dcgm-exporter
+  namespace: gpu-operator
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - nvidia-dcgm-exporter.devfest-toulouse.opsrel.io
+      secretName: nvidia-dcgm-exporter-crt
+  rules:
+    - host: nvidia-dcgm-exporter.devfest-toulouse.opsrel.io
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: nvidia-dcgm-exporter
+                port:
+                  number: 9400
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+  name: gpu-operator
+  namespace: gpu-operator
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - gpu-operator.devfest-toulouse.opsrel.io
+      secretName: gpu-operator-crt
+  rules:
+    - host: gpu-operator.devfest-toulouse.opsrel.io
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: gpu-operator
+                port:
+                  number: 8080

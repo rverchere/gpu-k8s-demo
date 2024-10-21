@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: gpu-operator
+  name: ubuntu-nvidia
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - name: pod-ubuntu
+    # Source : https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/gpu-operator-validator
+    image: "nvcr.io/nvidia/base/ubuntu:22.04_20240212"
+    resources:
+      limits:
+        nvidia.com/gpu: 1
