@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pech-ai-bou
-        image: rverchere/pech-ai-bou:latest
+        image: rverchere/pech-ai-bou:0.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8501
