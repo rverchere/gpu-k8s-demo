@@ -1,0 +1,65 @@
+# Managed cluster - cannot access to scheduler
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeProxy:
+  enabled: false
+kubeEtcd:
+  enabled: false
+alertmanager:
+  enabled: false
+
+grafana:
+  ## Timezone for the default dashboards
+  ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg
+  ##
+  defaultDashboardsTimezone: Europe/Paris
+  adminPassword: DevfestToulouse
+  ingress:
+    ## If true, Grafana Ingress will be created
+    ##
+    enabled: true
+    ingressClassName: nginx
+    ## Hostnames.
+    ## Must be provided if Ingress is enable.
+    ##
+    hosts:
+      - grafana.devfest-toulouse.opsrel.io
+    ## TLS configuration for grafana Ingress
+    ## Secret must be manually created in the namespace
+    ##
+    tls:
+      - hosts:
+          - grafana.devfest-toulouse.opsrel.io
+        secretName: observability-cert
+    ## Annotations for Grafana Ingress
+    ##
+    annotations:
+      nginx.org/mergeable-ingress-type: "minion"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/app-root: /grafana
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    ## Path for grafana ingress
+    path: /grafana(/|$)(.*)
+    ## For Kubernetes >= 1.18 you should specify the pathType (determines how Ingress paths should be matched)
+    ## See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
+    pathType: ImplementationSpecific
+  serviceMonitor:
+    enabled: true
+  grafana.ini:
+    server:
+      root_url: https://grafana.devfest-toulouse.opsrel.io/grafana
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+
+prometheus-node-exporter:
+  # allows to deploy prometheus-node-exporter on any nodes (used to deploy on database nodepool)
+  tolerations:
+  - operator: "Exists"
+    effect: "NoExecute"

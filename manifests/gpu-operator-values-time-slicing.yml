@@ -5,10 +5,14 @@ devicePlugin:
       default: |-
         version: v1
         sharing:
-          mps:
+          timeSlicing:
             resources:
               - name: nvidia.com/gpu
                 replicas: 4
             renameByDefault: false
             failRequestsGreaterThanOne: false
-    name: tmps-config
+    name: timeslicing-config
+
+dcgmExporter:
+  serviceMonitor:
+    enabled: true

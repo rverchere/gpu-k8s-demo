@@ -1,14 +1,29 @@
+mig:
+  strategy: none
+
 devicePlugin:
   config:
     create: true
     data:
-      default: |-
+      default: ""
+      mps:
         version: v1
         sharing:
           mps:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 4
+      timeSlicing:
+        version: v1
+        sharing:
+          timeSlicing:
             resources:
               - name: nvidia.com/gpu
                 replicas: 4
             renameByDefault: false
             failRequestsGreaterThanOne: false
-    name: mps-config
+    name: sharing-config
+
+dcgmExporter:
+  serviceMonitor:
+    enabled: true
