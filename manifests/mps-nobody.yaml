@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: devfest
+  name: mps-nbody
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - name: mps-nbody
+    image: nvcr.io/nvidia/k8s/cuda-sample:nbody-cuda11.7.1-ubuntu18.04
+    args: ["--benchmark", "--numbodies=4226048"]
+    resources:
+      limits:
+        nvidia.com/gpu: 1

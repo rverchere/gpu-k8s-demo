@@ -1,29 +1,19 @@
-mig:
-  strategy: none
-
 devicePlugin:
   config:
     create: true
+    default: "mps4"
+    name: "mps-parted-config"
     data:
-      default: ""
-      mps:
+      mps4: |-
         version: v1
         sharing:
           mps:
             resources:
             - name: nvidia.com/gpu
               replicas: 4
-      timeSlicing:
-        version: v1
-        sharing:
-          timeSlicing:
-            resources:
-              - name: nvidia.com/gpu
-                replicas: 4
-            renameByDefault: false
-            failRequestsGreaterThanOne: false
-    name: sharing-config
 
 dcgmExporter:
   serviceMonitor:
     enabled: true
+    additionalLabels:
+      release: prom
