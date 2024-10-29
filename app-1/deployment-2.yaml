@@ -7,6 +7,8 @@ metadata:
     app: chocol-ai-tine
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: chocol-ai-tine
@@ -21,8 +23,7 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            nvidia.com/gpu: 2
-            #nvidia.com/mig-3g.40gb: 1
+            nvidia.com/gpu: 1
         ports:
         - containerPort: 8501
         env:
@@ -73,7 +74,6 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
   name: chocol-ai-tine
-  namespace: devfest
 spec:
   ingressClassName: nginx
   tls:

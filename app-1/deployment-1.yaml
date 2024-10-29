@@ -2,22 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pech-ai-bou
+  name: chocol-ai-tine
   labels:
-    app: pech-ai-bou
+    app: chocol-ai-tine
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
-      app: pech-ai-bou
+      app: chocol-ai-tine
   template:
     metadata:
       labels:
-        app: pech-ai-bou
+        app: chocol-ai-tine
     spec:
       containers:
-      - name: pech-ai-bou
-        image: rverchere/pech-ai-bou:0.0.1
+      - name: chocol-ai-tine
+        image: rverchere/chocol-ai-tine:0.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8501
@@ -30,22 +32,20 @@ spec:
         volumeMounts:
         - mountPath: /root/.cache/huggingface
           name: hugginface-hub
-        resources:
-          limits:
-            #nvidia.com/gpu: 1
-            nvidia.com/mig-3g.40gb: 1
       volumes:
       - name: hugginface-hub
         persistentVolumeClaim:
           claimName: hugginface-hub
+      nodeSelector:
+        node.k8s.ovh/type: gpu
 ---
 apiVersion: v1
 kind: Service
 metadata:  
-  name: pech-ai-bou
+  name: chocol-ai-tine
 spec:
   selector:
-    app: pech-ai-bou
+    app: chocol-ai-tine
   ports:  
     - name: http
       port: 80
@@ -72,22 +72,21 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
-  name: pech-ai-bou
-  namespace: devfest
+  name: chocol-ai-tine
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - pech-ai-bou.devfest-toulouse.opsrel.io
-      secretName: pech-ai-bou-crt
+      - chocol-ai-tine.devfest-toulouse.opsrel.io
+      secretName: chocol-ai-tine-crt
   rules:
-    - host: pech-ai-bou.devfest-toulouse.opsrel.io
+    - host: chocol-ai-tine.devfest-toulouse.opsrel.io
       http:
         paths:
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: pech-ai-bou
+                name: chocol-ai-tine
                 port:
                   number: 80
