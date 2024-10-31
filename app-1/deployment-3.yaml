@@ -20,7 +20,7 @@ spec:
       containers:
       - name: chocol-ai-tine
         image: rverchere/chocol-ai-tine:0.0.1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             # nvidia.com/gpu: 1
@@ -40,55 +40,5 @@ spec:
       - name: hugginface-hub
         persistentVolumeClaim:
           claimName: hugginface-hub
----
-apiVersion: v1
-kind: Service
-metadata:  
-  name: chocol-ai-tine
-spec:
-  selector:
-    app: chocol-ai-tine
-  ports:  
-    - name: http
-      port: 80
-      targetPort: 8501
-      protocol: TCP
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: hugginface-hub
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 64Gi
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
-    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
-  name: chocol-ai-tine
-spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-      - chocol-ai-tine.devfest-toulouse.opsrel.io
-      secretName: chocol-ai-tine-crt
-  rules:
-    - host: chocol-ai-tine.devfest-toulouse.opsrel.io
-      http:
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: chocol-ai-tine
-                port:
-                  number: 80
+      nodeSelector:
+        node.k8s.ovh/type: gpu

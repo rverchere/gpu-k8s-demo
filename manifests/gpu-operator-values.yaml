@@ -1,0 +1,8 @@
+mig:
+  strategy: mixed
+
+dcgmExporter:
+  serviceMonitor:
+    additionalLabels:
+      release: prom
+    enabled: true

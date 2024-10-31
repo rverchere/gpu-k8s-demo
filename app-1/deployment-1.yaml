@@ -20,7 +20,7 @@ spec:
       containers:
       - name: chocol-ai-tine
         image: rverchere/chocol-ai-tine:0.0.1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
         env:
@@ -38,6 +38,9 @@ spec:
           claimName: hugginface-hub
       nodeSelector:
         node.k8s.ovh/type: gpu
+
+
+
 ---
 apiVersion: v1
 kind: Service

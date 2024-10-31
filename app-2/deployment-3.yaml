@@ -20,7 +20,7 @@ spec:
       containers:
       - name: pech-ai-bou
         image: rverchere/pech-ai-bou:0.0.1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
         env:
@@ -40,55 +40,5 @@ spec:
       - name: hugginface-hub
         persistentVolumeClaim:
           claimName: hugginface-hub
----
-apiVersion: v1
-kind: Service
-metadata:  
-  name: pech-ai-bou
-spec:
-  selector:
-    app: pech-ai-bou
-  ports:  
-    - name: http
-      port: 80
-      targetPort: 8501
-      protocol: TCP
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: hugginface-hub
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 64Gi
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
-    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
-  name: pech-ai-bou
-spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-      - pech-ai-bou.devfest-toulouse.opsrel.io
-      secretName: pech-ai-bou-crt
-  rules:
-    - host: pech-ai-bou.devfest-toulouse.opsrel.io
-      http:
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: pech-ai-bou
-                port:
-                  number: 80
+      nodeSelector:
+        node.k8s.ovh/type: gpu

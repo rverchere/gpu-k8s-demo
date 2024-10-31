@@ -20,7 +20,7 @@ spec:
       containers:
       - name: pech-ai-bou
         image: rverchere/pech-ai-bou:0.0.1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
         env:
@@ -39,6 +39,10 @@ spec:
       - name: hugginface-hub
         persistentVolumeClaim:
           claimName: hugginface-hub
+      nodeSelector:
+        node.k8s.ovh/type: gpu
+
+
 ---
 apiVersion: v1
 kind: Service
