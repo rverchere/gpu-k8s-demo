@@ -36,6 +36,8 @@ helm upgrade --install gpu-operator nvidia/gpu-operator --namespace gpu-operator
 kubectl apply --namespace gpu-operator -f app-2/deployment-2.yaml
 ```
 
+Open https://pech-ai-bou.devfest-toulouse.opsrel.io/
+
 # 3. GPU Sharing -  Strategie MIG
 
 ## Strategie MIG Mixed
