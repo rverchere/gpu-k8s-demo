@@ -8,16 +8,34 @@ helm upgrade --install gpu-operator nvidia/gpu-operator --namespace gpu-operator
 
 ## Strategie MPS
 
+```yaml
+# helm
+devicePlugin:
+  config:
+    create: true
+    default: "mps4"
+    name: "mps-parted-config"
+    data:
+      mps4: |-
+        version: v1
+        sharing:
+          mps:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 4
+```
+
 ## Strategie MIG Mixed
 
-```
-kubectl label nodes gpu-a100-node nvidia.com/mig.config=all-3g.40gb --overwrite=true
-```
 
 ```yaml
 # helm
 mig:
-  strategy: single
+  strategy: mixed # or single
+```
+
+```shell
+kubectl label nodes gpu-a100-node nvidia.com/mig.config=all-3g.40gb --overwrite=true
 ```
 
 ```yaml
