@@ -25,6 +25,7 @@ pei "kubectl scale deployment chocol-ai-tine --replicas 0"
 # Remove gpu-operator
 pi "# Remove nvidia gpu-operator chart"
 pei "helm uninstall gpu-operator -n gpu-operator"
+pei 'kubectl label node -l "node.k8s.ovh/type=gpu" "nvidia.com/mig.config=all-disabled" --overwrite'
 
 # Prepare apps
 pei "kubectl apply -f ../app-1/deployment-0.yaml"
