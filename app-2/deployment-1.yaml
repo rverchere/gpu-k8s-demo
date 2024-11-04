@@ -32,9 +32,6 @@ spec:
         volumeMounts:
         - mountPath: /root/.cache/huggingface
           name: hugginface-hub
-        resources:
-          limits:
-            nvidia.com/gpu: 1
       volumes:
       - name: hugginface-hub
         persistentVolumeClaim:
