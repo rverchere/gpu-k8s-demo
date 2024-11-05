@@ -3,8 +3,7 @@ import os
 import logging
 import streamlit as st
 import torch
-from diffusers import StableDiffusion3Pipeline, StableDiffusionPipeline, DiffusionPipeline, EulerDiscreteScheduler, \
-    DPMSolverMultistepScheduler, AutoencoderKL
+from diffusers import StableDiffusion3Pipeline
 from huggingface_hub import login
 
 logging.basicConfig(level=logging.INFO)
@@ -42,7 +41,7 @@ with cent_co:
     if st.button("Generate image", icon="🚀"):
         logging.info("Generating image")
 
-       pipe = StableDiffusion3Pipeline.from_pretrained(
+        pipe = StableDiffusion3Pipeline.from_pretrained(
             "stabilityai/stable-diffusion-3-medium-diffusers",
             torch_dtype=torch.float16
         )

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: chocol-ai-tine
-        image: rverchere/chocol-ai-tine:0.0.1
+        image: rverchere/chocol-ai-tine:0.0.3
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
