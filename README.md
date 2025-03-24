@@ -1,7 +1,13 @@
 # 0. Préparation
 
+```shell
+helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx --create-namespace
+helm upgrade --install cert-manager jetstack/cert-manager -n cert-manager --create-namespace --set installCRDs=true
+```
+
 1. Ajouter 1 node GPU
 2. Déployer l'appli, et scale à 0
+
 
 # 1. Deploiement application
 
@@ -25,7 +31,7 @@ kubectl apply --namespace gpu-operator -f app-1/deployment-2.yaml
 ```shell
 # helm repo add nvidia https://helm.ngc.nvidia.com/nvidia
 # helm repo update
-helm upgrade --install gpu-operator nvidia/gpu-operator --namespace gpu-operator --create-namespace --wait --version=24.6.2 -f manifests/gpu-operator-values.yaml
+helm upgrade --install gpu-operator nvidia/gpu-operator --namespace gpu-operator --create-namespace --wait --version=24.9.2 -f manifests/gpu-operator-values.yaml
 ```
 
 ## Vérification appli
