@@ -3,6 +3,8 @@
 ```shell
 helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx --create-namespace
 helm upgrade --install cert-manager jetstack/cert-manager -n cert-manager --create-namespace --set installCRDs=true
+
+kubectl create secret generic hugginface-hub -n gpu-operator --from-literal HUGGINGFACE_HUB_TOKEN=changeme
 ```
 
 1. Ajouter 1 node GPU

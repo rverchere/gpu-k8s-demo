@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chocol-ai-tine
+  name: b-ai-guette
   labels:
-    app: chocol-ai-tine
+    app: b-ai-guette
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: chocol-ai-tine
+      app: b-ai-guette
   template:
     metadata:
       labels:
-        app: chocol-ai-tine
+        app: b-ai-guette
     spec:
       containers:
-      - name: chocol-ai-tine
-        image: rverchere/chocol-ai-tine:0.0.3
+      - name: b-ai-guette
+        image: rverchere/b-ai-guette:0.0.1
         imagePullPolicy: IfNotPresent
         resources:
           limits:

@@ -10,9 +10,8 @@ logging.basicConfig(level=logging.INFO)
 
 left_co, cent_co, right_co = st.columns(3)
 with cent_co:
-    st.image("img/logo.png")
+    st.image("img/logo.jpg")
 
-chocolate_bar = st.slider('Nombre de barres de chocolat', 1, 5)
 cooking_type = st.select_slider(
     "Type de cuisson",
     options=[
@@ -24,8 +23,6 @@ cooking_type = st.select_slider(
     ],
     value="standard"
 )
-
-numbers = ["zero", "une", "deux", "trois", "quatre", "cinq"]
 
 if 'login' not in st.session_state:
     st.session_state['login'] = 'true'
@@ -48,8 +45,7 @@ with cent_co:
         pipe = pipe.to("cuda")
         pipe.enable_attention_slicing()
 
-        prompt = "Une photo d'un pain au chocolat avec une cuisson {cuisson}, avec {nombre} barres de chocolat à l'intérieur".format(
-            nombre=numbers[chocolate_bar],
+        prompt = "Une photo d'une baguette de pain, donc la cuisson est {cuisson}".format(
             cuisson=cooking_type
         )
         logging.info(prompt)
