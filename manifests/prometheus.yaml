@@ -15,7 +15,7 @@ grafana:
   ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg
   ##
   defaultDashboardsTimezone: Europe/Paris
-  adminPassword: DevfestToulouse
+  adminPassword: DevoxxFR2025
   ingress:
     ## If true, Grafana Ingress will be created
     ##
@@ -25,13 +25,13 @@ grafana:
     ## Must be provided if Ingress is enable.
     ##
     hosts:
-      - grafana.devfest-toulouse.opsrel.io
+      - grafana.devoxxfr.opsrel.io
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
     ##
     tls:
       - hosts:
-          - grafana.devfest-toulouse.opsrel.io
+          - grafana.devoxxfr.opsrel.io
         secretName: observability-cert
     ## Annotations for Grafana Ingress
     ##
@@ -51,7 +51,7 @@ grafana:
     enabled: true
   grafana.ini:
     server:
-      root_url: https://grafana.devfest-toulouse.opsrel.io/grafana
+      root_url: https://grafana.devoxxfr.opsrel.io/grafana
 
 prometheus:
   prometheusSpec:

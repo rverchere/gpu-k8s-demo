@@ -36,7 +36,7 @@ spec:
   tls:
     - hosts:
       - b-ai-guette.devoxxfr.opsrel.io
-      secretName: chocol-ai-tine-crt
+      secretName: b-ai-guette-crt
   rules:
     - host: b-ai-guette.devoxxfr.opsrel.io
       http:

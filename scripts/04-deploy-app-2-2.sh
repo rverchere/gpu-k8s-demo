@@ -6,7 +6,7 @@
 . demo-magic.sh
 clear
 
-export KUBECONFIG=~/.kube/devfest-gpu-kubeconfig
+export KUBECONFIG=~/.kube/devoxxfr-gpu-kubeconfig
 
 # Set demo-magic options
 TYPE_SPEED=50 # Accelerate typing
@@ -24,8 +24,8 @@ pe "kubectl apply -f ../app-2/deployment-2.yaml"
 
 # Check pod
 pi "# Get pod information"
-pe "kubecolor get pods -l app=pech-ai-bou -o wide -w"
-pe "kubecolor describe pods -l app=pech-ai-bou"
+pe "kubecolor get pods -l app=rat-ai-touille -o wide -w"
+pe "kubecolor describe pods -l app=rat-ai-touille"
 
 pe 'kubecolor describe node -l "node.k8s.ovh/type=gpu"'
 

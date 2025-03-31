@@ -6,7 +6,7 @@
 . demo-magic.sh
 clear
 
-export KUBECONFIG=~/.kube/devfest-gpu-kubeconfig
+export KUBECONFIG=~/.kube/devoxxfr-gpu-kubeconfig
 
 # Set demo-magic options
 TYPE_SPEED=50 # Accelerate typing
@@ -25,13 +25,13 @@ pe "kubecolor apply -f ../app-1/deployment-1.yaml"
 
 # Check pod
 pi "# Get pod information"
-pe "kubecolor get pods -l app=chocol-ai-tine -o wide -w"
-pe "kubecolor describe pods -l app=chocol-ai-tine"
+pe "kubecolor get pods -l app=b-ai-guette -o wide -w"
+pe "kubecolor describe pods -l app=b-ai-guette"
 
-pe "# Go to https://chocol-ai-tine.devfest-toulouse.opsrel.io/ and Generate some images"
-open https://chocol-ai-tine.devfest-toulouse.opsrel.io/
+pe "# Go to https://b-ai-guette.devoxxfr.opsrel.io/ and Generate some images"
+open https://b-ai-guette.devoxxfr.opsrel.io/
 
-pe "kubectl logs $(kubectl get pod -l app=chocol-ai-tine -o name)"
+pe "kubectl logs $(kubectl get pod -l app=b-ai-guette -o name)"
 
 pi "# Check GPU node"
 pe 'kubecolor get node -l "node.k8s.ovh/type=gpu"'

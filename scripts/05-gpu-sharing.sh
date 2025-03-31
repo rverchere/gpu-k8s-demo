@@ -6,7 +6,7 @@
 . demo-magic.sh
 clear
 
-export KUBECONFIG=~/.kube/devfest-gpu-kubeconfig
+export KUBECONFIG=~/.kube/devoxxfr-gpu-kubeconfig
 
 # Set demo-magic options
 TYPE_SPEED=50 # Accelerate typing
@@ -22,8 +22,8 @@ pi "# Check operator configuration"
 pe "bat -r 0:3 ../manifests/gpu-operator-values.yaml"
 
 p "# Scale deployment to 0"
-pe "kubectl scale deployment pech-ai-bou --replicas 0"
-pe "kubectl scale deployment chocol-ai-tine --replicas 0"
+pe "kubectl scale deployment b-ai-guette --replicas 0"
+pe "kubectl scale deployment rat-ai-touille --replicas 0"
 
 p "# Label node"
 pe 'kubectl label node -l "node.k8s.ovh/type=gpu" "nvidia.com/mig.config=all-3g.40gb" --overwrite'

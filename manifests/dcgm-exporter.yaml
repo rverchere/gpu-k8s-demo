@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - nvidia-dcgm-exporter.devfest-toulouse.opsrel.io
+      - nvidia-dcgm-exporter.devoxxfr.opsrel.io
       secretName: nvidia-dcgm-exporter-crt
   rules:
-    - host: nvidia-dcgm-exporter.devfest-toulouse.opsrel.io
+    - host: nvidia-dcgm-exporter.devoxxfr.opsrel.io
       http:
         paths:
           - path: /
@@ -40,10 +40,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - gpu-operator.devfest-toulouse.opsrel.io
+      - gpu-operator.devoxxfr.opsrel.io
       secretName: gpu-operator-crt
   rules:
-    - host: gpu-operator.devfest-toulouse.opsrel.io
+    - host: gpu-operator.devoxxfr.opsrel.io
       http:
         paths:
           - path: /

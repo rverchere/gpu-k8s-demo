@@ -6,7 +6,7 @@
 . demo-magic.sh
 clear
 
-export KUBECONFIG=~/.kube/devfest-gpu-kubeconfig
+export KUBECONFIG=~/.kube/devoxxfr-gpu-kubeconfig
 
 # Set demo-magic options
 TYPE_SPEED=50 # Accelerate typing
@@ -18,9 +18,8 @@ DEMO_COMMENT_COLOR=$CYAN
 _PWD=${PWD}
 
 # Scale to 0 apps
-pei "kubectl scale deployment pech-ai-bou --replicas 0"
-pei "kubectl scale deployment chocol-ai-tine --replicas 0"
-
+pei "kubectl scale deployment b-ai-guette --replicas 0"
+pei "kubectl scale deployment rat-ai-touille --replicas 0"
 
 # Remove gpu-operator
 pi "# Remove nvidia gpu-operator chart"
@@ -31,12 +30,12 @@ pei 'kubectl label node -l "node.k8s.ovh/type=gpu" "nvidia.com/mig.config=all-di
 pei "kubectl apply -f ../app-1/deployment-0.yaml"
 pei "kubectl apply -f ../app-1/deployment-1.yaml"
 pe "kubecolor -n gpu-operator get pods -w"
-pei "kubectl -n gpu-operator scale deploy chocol-ai-tine --replicas 0"
+pei "kubectl -n gpu-operator scale deploy b-ai-guette --replicas 0"
 
 pei "kubectl apply -f ../app-2/deployment-0.yaml"
 pei "kubectl apply -f ../app-2/deployment-1.yaml"
 pe "kubecolor -n gpu-operator get pods -w"
-pei "kubectl -n gpu-operator scale deploy pech-ai-bou --replicas 0"
+pei "kubectl -n gpu-operator scale deploy rat-ai-touille --replicas 0"
 
 pi "# End"
 # Return to the default PWD
