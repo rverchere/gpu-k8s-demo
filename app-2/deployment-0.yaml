@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:  
-  name: pech-ai-bou
+  name: rat-ai-touille
 spec:
   selector:
-    app: pech-ai-bou
+    app: rat-ai-touille
   ports:  
     - name: http
       port: 80
@@ -32,21 +32,21 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
-  name: pech-ai-bou
+  name: rat-ai-touille
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - pech-ai-bou.devfest-toulouse.opsrel.io
-      secretName: pech-ai-bou-crt
+      - rat-ai-touille.devoxxfr.opsrel.io
+      secretName: rat-ai-touille-crt
   rules:
-    - host: pech-ai-bou.devfest-toulouse.opsrel.io
+    - host: rat-ai-touille.devoxxfr.opsrel.io
       http:
         paths:
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: pech-ai-bou
+                name: rat-ai-touille
                 port:
                   number: 80

@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pech-ai-bou
+  name: rat-ai-touille
   labels:
-    app: pech-ai-bou
+    app: rat-ai-touille
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: pech-ai-bou
+      app: rat-ai-touille
   template:
     metadata:
       labels:
-        app: pech-ai-bou
+        app: rat-ai-touille
     spec:
       containers:
-      - name: pech-ai-bou
-        image: rverchere/pech-ai-bou:0.0.3
+      - name: rat-ai-touille
+        image: rverchere/rat-ai-touille:0.0.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501

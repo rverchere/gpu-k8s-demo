@@ -12,7 +12,7 @@ left_co, cent_co, right_co = st.columns(3)
 with cent_co:
     st.image("img/logo.png")
 
-defenses_number = st.slider('Nombre de défenses', min_value=0, max_value=8, value= 2, step=2)
+mustache_number = st.slider('Nombre de moustaches', min_value=0, max_value=6, value=2, step=2)
 humor_type = st.select_slider(
     "Humeur",
     options=[
@@ -47,7 +47,7 @@ with cent_co:
         pipe = pipe.to("cuda")
         pipe.enable_attention_slicing()
 
-        prompt = "Photo de wild boar qui est {humor_type}, avec {defenses_number} grandes tusks sur son museau".format(
+        prompt = "Photo de rat qui est {humor_type}, avec {mustache_number} grandes moustaches sur son museau".format(
 		    humor_type=humor_type,
 			defenses_number=defenses_number
 		)
