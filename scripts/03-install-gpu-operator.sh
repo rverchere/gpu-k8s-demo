@@ -27,8 +27,8 @@ pi "# Install gpu-operator (see specific values later)"
 pe "helm upgrade --install gpu-operator nvidia/gpu-operator --namespace gpu-operator --create-namespace --version=24.9.2 -f ../manifests/gpu-operator-values.yaml"
 
 pi "# Check what is installed"
-pe "helm list -n gpu-operator"
-pe "kubecolor get pods -n gpu-operator"
+pe "helm  -n gpu-operator list"
+pe "kubecolor -n gpu-operator get pods -n gpu-operator"
 
 pi "# End"
 # Return to the default PWD

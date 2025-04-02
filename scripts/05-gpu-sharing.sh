@@ -22,21 +22,21 @@ pi "# Check operator configuration"
 pe "bat -r 0:3 ../manifests/gpu-operator-values.yaml"
 
 p "# Scale deployment to 0"
-pe "kubectl scale deployment b-ai-guette --replicas 0"
-pe "kubectl scale deployment rat-ai-touille --replicas 0"
+pe "kubectl -n gpu-operator scale deployment b-ai-guette --replicas 0"
+pe "kubectl -n gpu-operator scale deployment rat-ai-touille --replicas 0"
 
 p "# Label node"
 pe 'kubectl label node -l "node.k8s.ovh/type=gpu" "nvidia.com/mig.config=all-3g.40gb" --overwrite'
 
 p "# Get pods status, and check with k9s"
-pe 'kubecolor get pods -w'
+pe 'kubecolor -n gpu-operator get pods -w'
 pe 'kubecolor describe node -l "node.k8s.ovh/type=gpu"'
 
 p "# Apply new deployment configuration"
-pe "kubectl diff -n gpu-operator -f ../app-1/deployment-3.yaml"
-pe "kubectl apply -n gpu-operator -f ../app-1/deployment-3.yaml"
-pe "kubectl diff -n gpu-operator -f ../app-2/deployment-3.yaml"
-pe "kubectl apply -n gpu-operator -f ../app-2/deployment-3.yaml"
+pe "kubectl -n gpu-operator diff -n gpu-operator -f ../app-1/deployment-3.yaml"
+pe "kubectl -n gpu-operator apply -n gpu-operator -f ../app-1/deployment-3.yaml"
+pe "kubectl -n gpu-operator diff -n gpu-operator -f ../app-2/deployment-3.yaml"
+pe "kubectl -n gpu-operator apply -n gpu-operator -f ../app-2/deployment-3.yaml"
 
 p "# Open application and generate image"
 

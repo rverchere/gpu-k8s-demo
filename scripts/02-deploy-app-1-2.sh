@@ -20,14 +20,14 @@ _PWD=${PWD}
 # Install app
 pi "# Update first application"
 pe 'yq e ".spec.template.spec" ../app-1/deployment-2.yaml'
-pe "kubectl diff -f ../app-1/deployment-2.yaml"
+pe "kubectl -n gpu-operator diff -f ../app-1/deployment-2.yaml"
 
-pe "kubectl apply -f ../app-1/deployment-2.yaml"
+pe "kubectl -n gpu-operator apply -f ../app-1/deployment-2.yaml"
 
 # Check pod
 pi "# Get pod information"
-pe "kubecolor get pods -l app=b-ai-guette -o wide -w"
-pe "kubecolor describe pods -l app=b-ai-guette"
+pe "kubecolor -n gpu-operator get pods -l app=b-ai-guette -o wide -w"
+pe "kubecolor -n gpu-operator describe pods -l app=b-ai-guette"
 
 pi "# End"
 # Return to the default PWD
