@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 
 left_co, cent_co, right_co = st.columns(3)
 with cent_co:
-    st.image("img/logo.png")
+    st.image("img/logo.jpg")
 
 mustache_number = st.slider('Nombre de moustaches', min_value=0, max_value=6, value=2, step=2)
 humor_type = st.select_slider(
