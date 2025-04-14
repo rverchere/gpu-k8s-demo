@@ -45,7 +45,7 @@ with cent_co:
         pipe = pipe.to("cuda")
         pipe.enable_attention_slicing()
 
-        prompt = "Une photo d'une baguette de pain, donc la cuisson est {cuisson}".format(
+        prompt = "Une photo d'une baguette de pain dont la cuisson est {cuisson}".format(
             cuisson=cooking_type
         )
         logging.info(prompt)

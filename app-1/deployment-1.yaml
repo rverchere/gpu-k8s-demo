@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: b-ai-guette
-        image: rverchere/b-ai-guette:0.0.2
+        image: rverchere/b-ai-guette:0.0.3
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501

@@ -47,9 +47,9 @@ with cent_co:
         pipe = pipe.to("cuda")
         pipe.enable_attention_slicing()
 
-        prompt = "Photo de rat qui est {humor_type}, avec {mustache_number} grandes moustaches sur son museau".format(
+        prompt = "Photo de rat qui est {humor_type}, avec {mustache_number} grandes moustaches sur son museau, qui court dans Paris cybernétique".format(
 		    humor_type=humor_type,
-			defenses_number=defenses_number
+			mustache_number=mustache_number
 		)
         logging.info(prompt)
 

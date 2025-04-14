@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: rat-ai-touille
-        image: rverchere/rat-ai-touille:0.0.2
+        image: rverchere/rat-ai-touille:0.0.3
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
