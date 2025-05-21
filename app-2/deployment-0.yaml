@@ -37,10 +37,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - rat-ai-touille.devoxxfr.opsrel.io
+      - rat-ai-touille.cloud-native-aix-mrs.opsrel.io
       secretName: rat-ai-touille-crt
   rules:
-    - host: rat-ai-touille.devoxxfr.opsrel.io
+    - host: rat-ai-touille.cloud-native-aix-mrs.opsrel.io
       http:
         paths:
           - path: /

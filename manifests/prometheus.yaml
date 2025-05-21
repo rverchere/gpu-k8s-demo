@@ -25,13 +25,13 @@ grafana:
     ## Must be provided if Ingress is enable.
     ##
     hosts:
-      - grafana.devoxxfr.opsrel.io
+      - grafana.cloud-native-aix-mrs.opsrel.io
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
     ##
     tls:
       - hosts:
-          - grafana.devoxxfr.opsrel.io
+          - grafana.cloud-native-aix-mrs.opsrel.io
         secretName: observability-cert
     ## Annotations for Grafana Ingress
     ##
@@ -51,7 +51,7 @@ grafana:
     enabled: true
   grafana.ini:
     server:
-      root_url: https://grafana.devoxxfr.opsrel.io/grafana
+      root_url: https://grafana.cloud-native-aix-mrs.opsrel.io/grafana
 
 prometheus:
   prometheusSpec:

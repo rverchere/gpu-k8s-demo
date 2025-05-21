@@ -28,8 +28,8 @@ pi "# Get pod information"
 pe "kubecolor -n gpu-operator get pods -l app=b-ai-guette -o wide -w"
 #pe "kubecolor -n gpu-operator describe pods -l app=b-ai-guette"
 
-pe "# Go to https://b-ai-guette.devoxxfr.opsrel.io/ and Generate some images"
-open https://b-ai-guette.devoxxfr.opsrel.io/
+pe "# Go to https://b-ai-guette.cloud-native-aix-mrs.opsrel.io/ and Generate some images"
+open https://b-ai-guette.cloud-native-aix-mrs.opsrel.io/
 
 pe "kubectl -n gpu-operator logs $(kubectl -n gpu-operator get pod -l app=b-ai-guette -o name)"
 

@@ -35,10 +35,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - b-ai-guette.devoxxfr.opsrel.io
+      - b-ai-guette.cloud-native-aix-mrs.opsrel.io
       secretName: b-ai-guette-crt
   rules:
-    - host: b-ai-guette.devoxxfr.opsrel.io
+    - host: b-ai-guette.cloud-native-aix-mrs.opsrel.io
       http:
         paths:
           - path: /

@@ -38,7 +38,7 @@ pe "kubectl -n gpu-operator apply -n gpu-operator -f ../app-1/deployment-3.yaml"
 pe "kubectl -n gpu-operator diff -n gpu-operator -f ../app-2/deployment-3.yaml"
 pe "kubectl -n gpu-operator apply -n gpu-operator -f ../app-2/deployment-3.yaml"
 
-p "# Open application and generate image -> https://rat-ai-touille.devoxxfr.opsrel.io/"
+p "# Open application and generate image -> https://rat-ai-touille.cloud-native-aix-mrs.opsrel.io/"
 
 p "# Check nvidia-smi"
 pe "kubectl exec $(kubectl get pod -l app.kubernetes.io/component=nvidia-driver -o name) -- nvidia-smi"
