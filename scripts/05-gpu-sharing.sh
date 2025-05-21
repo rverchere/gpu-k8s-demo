@@ -9,7 +9,6 @@ clear
 export KUBECONFIG=~/.kube/devoxxfr-gpu-kubeconfig
 
 # Set demo-magic options
-TYPE_SPEED=50 # Accelerate typing
 DEMO_CMD_COLOR="" # No bold
 DEMO_PROMPT="${PURPLE}$ ${COLOR_RESET}"
 DEMO_COMMENT_COLOR=$CYAN
