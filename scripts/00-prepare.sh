@@ -30,7 +30,7 @@ pei 'kubectl label node -l "node.k8s.ovh/type=gpu" "nvidia.com/mig.config=all-di
 pei "kubectl -n gpu-operator apply -f ../app-1/deployment-0.yaml"
 pei "kubectl -n gpu-operator apply -f ../app-1/deployment-1.yaml"
 pe  "kubecolor -n gpu-operator get pods -w"
-pei "kubectl -n gpu-operator scale deploy b-ai-guette --replicas 0"
+#pei "kubectl -n gpu-operator scale deploy b-ai-guette --replicas 0"
 
 pei "kubectl -n gpu-operator apply -f ../app-2/deployment-0.yaml"
 pei "kubectl -n gpu-operator apply -f ../app-2/deployment-1.yaml"
